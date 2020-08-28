@@ -14,15 +14,13 @@ class BaseConverter extends React.Component {
   render() {
     const value = isNaN(this.props.value) ? '' : this.props.value;
     return (
-      <div>
-        <label>
-          Base {this.props.base} :
-          <input
-            value={value.toString(this.props.base)}
-            onChange={this.handleChange}
-          />
-        </label>
-      </div>
+      <label>
+        Base {this.props.base} :
+        <input
+          value={value.toString(this.props.base)}
+          onChange={this.handleChange}
+        />
+      </label>
     );
   }
 }
@@ -48,7 +46,18 @@ class NumberBase extends React.Component {
         key={base}
       />
     ));
-    return <div>{children}</div>;
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <h1>Bases converter</h1>
+        {children}
+      </div>
+    );
   }
 }
 
