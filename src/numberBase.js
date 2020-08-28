@@ -8,9 +8,6 @@ class BaseConverter extends React.Component {
 
   handleChange(event) {
     const value = event.target.value;
-    const lastNumber = value.split('').slice(-1);
-    const lastKey = parseInt(lastNumber, this.props.base);
-    if (isNaN(lastKey) && value.length !== 0) return;
     this.props.onChange(parseInt(value, this.props.base));
   }
 
