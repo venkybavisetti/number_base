@@ -8,13 +8,14 @@ class BaseConverter extends React.Component {
 
   handleChange(event) {
     const value = event.target.value;
-    let i = parseInt(value.split('').slice(-1), this.props.base);
-    if (i === null) return;
+    const lastNumber = value.split('').slice(-1);
+    const lastKey = parseInt(lastNumber, this.props.base);
+    if (isNaN(lastKey) && value.length !== 0) return;
     this.props.onChange(parseInt(value, this.props.base));
   }
 
   render() {
-    const value = this.props.value ? this.props.value : '';
+    const value = isNaN(this.props.value) ? '' : this.props.value;
     return (
       <div>
         <label>
@@ -34,6 +35,7 @@ class NumberBase extends React.Component {
     super(props);
     this.state = { value: 0 };
     this.handleChange = this.handleChange.bind(this);
+    this.base = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   }
 
   handleChange(value) {
@@ -41,8 +43,7 @@ class NumberBase extends React.Component {
   }
 
   render() {
-    const array = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-    const children = array.map((base) => (
+    const children = this.base.map((base) => (
       <BaseConverter
         base={base}
         value={this.state.value}

@@ -1,5 +1,5 @@
 import React from 'react';
-import NumberBase from './numberBase.js';
+import NumberBase from './NumberBase.js';
 
 const App = () => <NumberBase />;
 
